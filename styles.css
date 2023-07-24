@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: black;
+  }
+  
+  p.line {
+    background-color: black;
+    color: white;
+    font-family: 'Lucida Console';
+  }
+  
+  p.line::selection {
+    background-color: white;
+    color: black;
+  }
+  
+  p.line .letter.cursor {
+    background-color: white;
+    color: black;
+  }
+  
+  #last-char-cursor {
+    background-color: black;
+    user-select: none;
+  }
+  
+  #last-char-cursor.cursor {
+    background-color: white;
+  }
