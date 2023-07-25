@@ -31,7 +31,7 @@ document.addEventListener("keydown", e => {
     line.removeChild(line.children[last]);
   }
   
-  if (e.key != "Backspace" && e.key != "ArrowLeft" && e.key != "ArrowRight" && e.key != "Shift" && e.key != "CapsLock") {
+  if (e.key != "Backspace" && e.key != "ArrowLeft" && e.key != "ArrowRight" && e.key != "Shift" && e.key != "CapsLock" && e.key != "Enter") {
     newChar.classList.add("letter");
     line.appendChild(newChar);
     currentChar++;
@@ -122,6 +122,45 @@ console.log(lineElements[lineElements.length-4].innerHTML);
       document.querySelector('#last-char-cursor').classList.add("cursor");
     }
     
+  }
+
+
+  if (e.key == "Enter") {
+    cursor.remove();
+    console.log(document.querySelector('#terminal-text').children[document.querySelector('#terminal-text').children.length-1].children);
+    if (document.querySelector('#terminal-text').children[document.querySelector('#terminal-text').children.length-1].children.length < 4) {
+      let newLine = document.createElement("p");
+    newLine.setAttribute("style", "display: flex; flex-direction: row; flex-wrap: wrap;");
+    newLine.innerHTML = '<span class="a">codinger-cutie@codinger-cutie:github~$</span>';
+    newLine.classList.add("line");
+    terminalText.appendChild(newLine);
+    } else {
+      let outputLine = document.createElement("p");
+      outputLine.setAttribute("style", "display: flex; flex-direction: row; flex-wrap: wrap;");
+      outputLine.innerHTML = document.querySelector('#terminal-text').children[document.querySelector('#terminal-text').children.length-1].innerHTML;
+      outputLine.classList.add("output-line");
+      terminalText.appendChild(outputLine);
+      let a = document.querySelectorAll('.output-line > .a');
+      a.forEach(a => {
+        a.remove();
+      });
+
+      let newLine = document.createElement("p");
+      newLine.setAttribute("style", "display: flex; flex-direction: row; flex-wrap: wrap;");
+      newLine.innerHTML = '<span class="a">codinger-cutie@codinger-cutie:github~$</span>';
+      newLine.classList.add("line");
+      terminalText.appendChild(newLine);
+    }
+    line = document.querySelector('#terminal-text').children[document.querySelector('#terminal-text').children.length-1];
+    console.log(document.querySelector('#terminal-text').children[document.querySelector('#terminal-text').children.length-1]);
+
+    cursor = document.createElement("span");
+    cursor.style.width = '9.64px';
+    cursor.style.height = '16px';
+    cursor.innerHTML = '.';
+    cursor.setAttribute("id", "last-char-cursor");
+    cursor.classList.add("cursor");
+    line.appendChild(cursor);
   }
   
 });
